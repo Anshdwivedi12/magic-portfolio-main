@@ -1,18 +1,22 @@
 "use client";
 
-// This component has been cleaned to remove the Mailchimp newsletter section
+import React from "react";
 
-import { useState } from "react";
+interface NewsletterProps {
+  newsletter: {
+    display: boolean;
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+}
 
-// You can remove the `mailchimp` import if it's not used elsewhere
-// import { mailchimp } from "@/app/resources";
+export const Mailchimp = ({ newsletter }: NewsletterProps) => {
+  if (!newsletter.display) return null;
 
-// Also clean unused components from Once UI
-// import { Button, Flex, Heading, Input, Text, Background, Column } from "@/once-ui/components";
-
-// If this file is no longer needed, you can even delete it completely from your project
-// or repurpose it for another component.
-
-export const Mailchimp = () => {
-  return null; // or simply delete the component if not used
+  return (
+    <div className="p-4 bg-gray-100 rounded-lg">
+      <h2 className="text-xl font-bold mb-2">{newsletter.title}</h2>
+      <p className="text-gray-700">{newsletter.description}</p>
+    </div>
+  );
 };
